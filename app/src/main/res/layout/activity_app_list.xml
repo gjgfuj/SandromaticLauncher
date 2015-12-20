@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                tools:context="tk.sandradev.launcher.AppListActivity" android:orientation="vertical"
+                android:focusableInTouchMode="false" android:id="@+id/tllayout"
+                android:fitsSystemWindows="true">
+
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/backButton" android:layout_gravity="top|left" android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@android:color/transparent"
+                android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha" android:onClick="showHome"/>
+        <!--<ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:text="New Button"
+                android:id="@+id/settingsButton" android:layout_gravity="top|right" android:src="@android:drawable/ic_menu_preferences" android:background="@android:color/transparent"
+                android:onClick="preferences"
+                android:minHeight="48dp" android:minWidth="48dp" android:layout_alignParentLeft="false"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"/>
+                -->
+    </RelativeLayout>
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/scrollView">
+        <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/horizontalScrollView">
+            <GridLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:layout_alignParentTop="true" android:layout_alignParentStart="true" android:id="@+id/grid"
+                    >
+            </GridLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+</LinearLayout>

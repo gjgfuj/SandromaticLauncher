@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "tk.sandradev.launcher.AppInfoActivity"/>
+      <point      
+        x = "1804"      
+        y = "428"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "tk.sandradev.launcher.AppListActivity"/>
+      <point      
+        x = "2600"      
+        y = "356"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "tk.sandradev.launcher.HomeActivity"/>
+      <point      
+        x = "196"      
+        y = "516"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "tk.sandradev.launcher.UnknownActivity"/>
+      <point      
+        x = "1144"      
+        y = "236"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "tk.sandradev.launcher.WidgetActivity"/>
+      <point      
+        x = "520"      
+        y = "108"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>

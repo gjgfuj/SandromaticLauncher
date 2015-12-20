@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SandromaticLauncher</string>
+    <string name="title_activity_app_list">Applications</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="not_implemented">Not Yet Implemented.</string>
+    <string name="invalid_app">Invalid App</string>
+    <string name="title_activity_app_info">Application Info</string>
+    <string name="button_launch">Launch</string>
+    <string name="addToHome">Add To Home</string>
+    <string name="removeFromHome">Remove From Home</string>
+    <string name="appinfo">Application Info</string>
+
+</resources>
