@@ -50,18 +50,6 @@ public class AppListActivity extends Activity
         unbindService(connection);
     }
 
-    public void preferences(View v)
-    {
-        //Intent i = new Intent(this, PreferencesActivity.class);
-        Toast.makeText(this, R.string.not_implemented, Toast.LENGTH_SHORT).show();
-    }
-
-    public void showHome(View v)
-    {
-        Intent i = new Intent(this, HomeActivity.class);
-        startActivity(i);
-    }
-
     private void loadView()
     {
         Display display = getWindowManager().getDefaultDisplay();

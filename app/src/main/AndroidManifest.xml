@@ -42,12 +42,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tk.sandradev.launcher.AppListActivity" />
         </activity>
-        <activity
-                android:name=".WidgetActivity"
-                android:label="@string/title_activity_app_list"
-                android:parentActivityName=".HomeActivity"
-                android:theme="@style/Wallpaper.NoActionBar">
-        </activity>
         <activity android:name=".UnknownActivity"
                 android:label="Unknown Activity">
                 </activity>

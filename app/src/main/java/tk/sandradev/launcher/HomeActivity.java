@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
@@ -65,61 +66,70 @@ public class HomeActivity extends Activity
         GridLayout layout = (GridLayout) findViewById(R.id.grid);
         layout.removeAllViewsInLayout();
         layout.setColumnCount(point.x / service.DPPixels);
-        for (int i = 0;i<service.homeApps.size();i++)
+        int i = 0;
+        for (;i<service.homeApps.size();i++)
         {
-            final AppInfo app = service.homeApps.get(i);
-            ImageButton view = new ImageButton(this);
-            view.setImageDrawable(app.icon);
-            view.setAdjustViewBounds(true);
-            view.setMaxWidth(service.DPPixels);
-            view.setMaxHeight(service.DPPixels);
-            view.setBackgroundResource(android.R.color.transparent);
-            final int index = i;
-            view.setOnClickListener(new View.OnClickListener()
+            addApp(service.homeApps.get(i),i);
+        }
+        AppInfo appList = new AppInfo();
+        appList.label = "Application List";
+        Intent intent = new Intent(this, AppListActivity.class);
+        appList.packageName = intent.getComponent().getPackageName();
+        appList.name = intent.getComponent().getClassName();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            appList.icon = getResources().getDrawable(R.drawable.ic_launcher,getTheme());
+        } else {
+            appList.icon = getResources().getDrawable(R.drawable.ic_launcher);
+        }
+        addApp(appList,i+1);
+    }
+    protected void addApp(final AppInfo app,final int index)
+    {
+
+        ImageButton view = new ImageButton(this);
+        view.setImageDrawable(app.icon);
+        view.setAdjustViewBounds(true);
+        view.setMaxWidth(service.DPPixels);
+        view.setMaxHeight(service.DPPixels);
+        view.setBackgroundResource(android.R.color.transparent);
+        view.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
             {
-                @Override
-                public void onClick(View view)
-                {
-                    Intent i = new Intent();
-                    i.setComponent(new ComponentName((String) app.packageName, (String) app.name));
-                    startActivity(i);
-                }
-            });
-            view.setOnLongClickListener(new View.OnLongClickListener()
+                Intent i = new Intent();
+                i.setComponent(new ComponentName((String) app.packageName, (String) app.name));
+                startActivity(i);
+            }
+        });
+        view.setOnLongClickListener(new View.OnLongClickListener()
+        {
+            @Override
+            public boolean onLongClick(View view)
             {
-                @Override
-                public boolean onLongClick(View view)
+                if (app.label=="Unknown App")
                 {
-                    if (app.label=="Unknown App")
-                    {
-                        service.homeApps.remove(index);
-                        service.saveApps();
-                        Intent i = new Intent(HomeActivity.this, AppListActivity.class);
-                        startActivity(i);
-                        return true;
-                    }
-                    Intent i = new Intent(HomeActivity.this, AppInfoActivity.class);
-                    i.putExtra("name", (String) app.name);
-                    i.putExtra("packageName", (String) app.packageName);
+                    service.homeApps.remove(index);
+                    service.saveApps();
+                    Intent i = new Intent(HomeActivity.this, AppListActivity.class);
                     startActivity(i);
                     return true;
                 }
-            });
-            layout.addView(view);
-        }
+                Intent i = new Intent(HomeActivity.this, AppInfoActivity.class);
+                i.putExtra("name", (String) app.name);
+                i.putExtra("packageName", (String) app.packageName);
+                startActivity(i);
+                return true;
+            }
+        });
+        GridLayout layout = (GridLayout) findViewById(R.id.grid);
+        layout.addView(view);
     }
 
     public void showApps(View v)
     {
         Intent i = new Intent(this, AppListActivity.class);
         startActivity(i);
-        overridePendingTransition(R.anim.abc_slide_in_top, 0);
-    }
-
-    public void showWidgets(View v)
-    {
-        //Intent i = new Intent(this, WidgetActivity.class);
-        //startActivity(i);
     }
 
     public void preferences(View v)
@@ -150,10 +160,6 @@ public class HomeActivity extends Activity
         {
             showApps(null);
         }
-
-        public void onUpSwipe()
-        {
-            showWidgets(null);
-        }
+        public void onUpSwipe() {}
     }
 }
